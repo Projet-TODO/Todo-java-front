@@ -1,0 +1,13 @@
+<div class="task-item">
+  <div class="initial-section">
+    <i class="task-status-icon"
+      [ngClass]="task.isAchieved ? 'fas fa-check completed' : 'fas fa-check not-completed'"
+      (click)="toggleTaskStatus(task)">
+    </i>
+
+    <span>{{ task.title }}</span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+  <div class="drop-down-section">
+  </div>
+</div>

@@ -1,0 +1,99 @@
+@use "src/theme";
+
+.footer {
+  width: 100%;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+}
+
+.runner {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  bottom: 20px;
+  background-size: cover;
+  animation: run-animation 10s steps(4) infinite, move 10s linear infinite;
+}
+
+@keyframes run-animation {
+  0%{
+    background-image: url('/assets/sprites/obj0.png');
+  }
+  5%{
+    background-image: url('/assets/sprites/obj1.png');
+  }
+  10%{
+    background-image: url('/assets/sprites/obj2.png');
+  }
+  15%{
+    background-image: url('/assets/sprites/obj3.png');
+  }
+  20%{
+    background-image: url('/assets/sprites/obj0.png');
+  }
+  25%{
+    background-image: url('/assets/sprites/obj1.png');
+  }
+  30%{
+    background-image: url('/assets/sprites/obj2.png');
+  }
+  35%{
+    background-image: url('/assets/sprites/obj3.png');
+  }
+  40%, 60% {
+    background-image: url('/assets/sprites/jump0.png');
+  }
+  45% {
+    background-image: url('/assets/sprites/jump1.png');
+  }
+  50% {
+    background-image: url('/assets/sprites/jump2.png');
+  }
+  55% {
+    background-image: url('/assets/sprites/jump3.png');
+  }
+  60% {
+    background-image: url('/assets/sprites/obj0.png');
+  }
+  65% {
+    background-image: url('/assets/sprites/obj1.png');
+  }
+  70% {
+    background-image: url('/assets/sprites/obj2.png');
+  }
+  75% {
+    background-image: url('/assets/sprites/obj3.png');
+  }
+  80% {
+    background-image: url('/assets/sprites/obj0.png');
+  }
+  85% {
+    background-image: url('/assets/sprites/obj1.png');
+  }
+  90% {
+    background-image: url('/assets/sprites/obj2.png');
+  }
+  95% {
+    background-image: url('/assets/sprites/obj3.png');
+  }
+}
+
+@keyframes move {
+  /* Animation de déplacement linéaire */
+  0% {
+    transform: translateX(-100px) translateY(0); /* Départ de la gauche */
+  }
+  40% {
+    transform: translateX(40vw) translateY(0); /* Avant le saut */
+  }
+  50% {
+    transform: translateX(50vw) translateY(-50px); /* Saut : il monte */
+  }
+  60% {
+    transform: translateX(60vw) translateY(0); /* Il atterrit après le saut */
+  }
+  100% {
+    transform: translateX(100vw) translateY(0); /* Arrivée à droite */
+  }
+}

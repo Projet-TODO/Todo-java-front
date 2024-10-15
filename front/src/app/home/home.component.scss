@@ -1,53 +1,59 @@
-:host {
+@use "src/theme";
+
+.home-container {
+  height: calc(100vh - 270px);
+  width: 100%;
   display: flex;
   align-items: center;
-  margin: 25px;
+  justify-content: center;
+}
 
-  .title {
-    text-align: center;
-    font-family: Caveat, sans-serif;
-    font-size: 3.5em;
-    font-weight: 700;
-    margin: 30px 0;
-  }
+.input-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-  p {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 1.3em;
-  }
+.input-label {
+  font-size: 1.2rem;
+  color: theme.$white;
+  margin-bottom: 10px;
+}
 
-  .left {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+.input-wrapper {
+  display: flex;
+  align-items: center;
+}
 
-    .sun {
-      width: 90px;
-      margin-left: 35px;
-    }
+.text-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px 0 0 8px;
+  font-size: 1rem;
+  width: 500px;
+}
 
-    .card {
-      border: none;
-      display: flex;
-      align-items: baseline;
+.submit-button {
+  padding: 11.5px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  background-color: #6200ea;
+  color: white;
+  cursor: pointer;
+  margin-left: -2px;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      .card-text {
-        font-family: "Dancing Script", sans-serif;
-        font-size: x-large;
-        margin-top: 0
-      }
-    }
-  }
+.submit-button i {
+  font-size: 1.2rem;
+}
 
-  .right {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-
-    img {
-      width: 80%;
-    }
-  }
+.submit-button:hover {
+  background-color: #3700b3;
 }

@@ -1,0 +1,95 @@
+@use "src/theme";
+
+.project-layout {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 270px);
+  width: 100%;
+}
+
+.task-item{
+  width: 30%;
+}
+
+.sidebar {
+  width: 300px;
+  background-color: theme.$grey;
+  padding: 20px;
+  display: flex;
+  position: absolute;
+  left: 0;
+  flex-direction: column;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.add-project-container{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .add-project-button {
+    border-radius: 50%;
+    padding: 6px 10px 6px 10px;
+    background-color: theme.$dark-grey;
+    border: none;
+    cursor: pointer;
+  }
+
+  .add-project-text {
+    font-size: 1.2rem;
+    background-color: theme.$dark-grey;
+    border-radius: 50px;
+    padding: 8px;
+    margin-left: 10px;
+  }
+}
+
+.project-list {
+  width: 100%;
+}
+
+.project-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 50px;
+  background-color: theme.$dark-grey;
+}
+
+.selected-project-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: theme.$white;
+  margin-bottom: 20px;
+}
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+}
+
+button[mat-icon-button] {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.play-project-button{
+  background-color: transparent !important;
+  border: none;
+}

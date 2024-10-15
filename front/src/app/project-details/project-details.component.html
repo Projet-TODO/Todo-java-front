@@ -1,0 +1,29 @@
+<div class="project-layout">
+  <div class="sidebar">
+    <h2 class="sidebar-title">Mes Projets</h2>
+    <div class="add-project-container">
+      <button class="add-project-button" (click)="addProject()">
+        <i class="fas fa-plus"></i>
+      </button>
+      <span class="add-project-text">New projects</span>
+    </div>
+
+    <div class="project-list">
+      <div class="project-item" *ngFor="let project of projects" (click)="selectProject(project)">
+        <span>{{ project.title }}</span>
+        <button class="play-project-button">
+          <i class="fas fa-play"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="selected-project-title">{{ selectedProject?.title }}</h1>
+  <div class="tasks-list" *ngIf="selectedProject">
+    <task-item
+      class="task-item"
+      *ngFor="let task of selectedProject.tasks"
+      [task]="task">
+    </task-item>
+  </div>
+</div>

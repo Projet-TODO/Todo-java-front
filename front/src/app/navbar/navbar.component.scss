@@ -1,40 +1,43 @@
 @use "src/theme";
 
 nav {
-  height: 80px;
-  background: linear-gradient(to right, theme.$common-purple, theme.$common-red);
+  height: 120px;
+  background: transparent;
 
-  div {
+  .nav-container {
     height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
-
-    img {
-      margin-left: 20px;
-      height: 60px;
-      transition: .3s;
-
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-
-    .active {
-      text-decoration: underline;
-    }
+    justify-content: center;
   }
 }
 
-.mat-nav-list {
-  margin-left: 50px;
-  padding: 0;
+.nav-title {
+  font-size: 4rem;
+  color: theme.$white;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+.nav-links {
   display: flex;
+  margin-left: auto;
+}
+
+.mat-nav-list {
+  padding-inline: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .mat-list-base .mat-list-item {
   font-size: large;
   color: theme.$white;
-  transition: .3s;
+  transition: 0.3s;
+  width: max-content;
 
   &:hover {
     transform: scale(1.2);

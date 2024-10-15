@@ -1,0 +1,45 @@
+@use "src/theme";
+
+.task-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 30%;
+  background-color: theme.$grey;
+  padding: 15px;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  position: relative;
+
+  .initial-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .task-status-icon {
+      margin-right: 10px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 50%;
+      padding: 10px;
+
+        &.completed {
+          color: theme.$green;
+          border:  1px solid theme.$green;
+        }
+
+        &.not-completed {
+          color: theme.$dark-grey;
+          border:  1px solid theme.$dark-grey;
+        }
+    }
+  }
+
+  .drop-down-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+}

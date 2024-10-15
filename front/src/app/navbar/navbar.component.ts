@@ -1,5 +1,7 @@
-import { Component, OnInit } from "@angular/core"
-import { Link } from "models/links.model"
+import { Component } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { SignupDialogComponent } from "../signup-dialog/signup-dialog.component";
+import { SigninDialogComponent } from "../signin-dialog/signin-dialog.component";
 
 @Component({
   selector: "epf-navbar",
@@ -7,10 +9,22 @@ import { Link } from "models/links.model"
   styleUrls: ["./navbar.component.scss"],
 })
 export class NavbarComponent {
-  links: Link[] = []
+  links: [{}] = [{}];
 
-  constructor() {
-    this.links.push({ name: "Students", href: "students" })
-    this.links.push({ name: "Majors", href: "majors" })
+  constructor(public dialog: MatDialog) {
+    this.links.push({ name: "Sign up", href: "signup" });
+    this.links.push({ name: "Sign in", href: "signin" });
+  }
+
+  openSignupDialog(): void {
+    this.dialog.open(SignupDialogComponent, {
+      width: '600px',
+    });
+  }
+
+  openSigninDialog(): void {
+    this.dialog.open(SigninDialogComponent, {
+      width: '600px',
+    });
   }
 }

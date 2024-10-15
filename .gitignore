@@ -2,3 +2,6 @@
 # System files
 .DS_Store
 Thumbs.db
+package-lock.json
+node_modules/
+.angular/
