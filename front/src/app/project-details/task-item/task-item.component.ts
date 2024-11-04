@@ -1,18 +1,35 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Task } from '../../models/task.model';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'task-item',
   templateUrl: './task-item.component.html',
-  styleUrls: ['./task-item.component.scss']
+  styleUrls: ['./task-item.component.scss'],
+  animations: [
+    trigger('dropdownAnimation', [
+      transition(':enter', [
+        style({ height: 0, opacity: 0 }),
+        animate('0.3s ease-out', style({ height: '*', opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('0.3s ease-in', style({ height: 0, opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class TaskItemCompnent implements OnInit {
   @Input() task!: Task;
+  isDropdownOpen = false;
 
   constructor() {
   }
 
   ngOnInit(): void {
+  }
+
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 
   editTask(task: Task): void {

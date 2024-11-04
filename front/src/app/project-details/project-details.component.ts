@@ -12,6 +12,7 @@ export class ProjectDetailsComponent implements OnInit {
 
   projects: Project[] = [];
   selectedProject: Project | null = null;
+  newTaskTitle: string = '';
 
   constructor() {
     const user1: User = { id: 1n, firstname: 'Alice', email: 'alice@example.com', lastname: 'Doe', password: '123456' };
@@ -63,6 +64,30 @@ export class ProjectDetailsComponent implements OnInit {
             deadLine: new Date('2024-02-20'),
             priority: 3,
             description: 'Description de la tâche 2 du Projet 2',
+          },
+          {
+            id: 5n,
+            title: 'Tâche 3',
+            isAchieved: false,
+            deadLine: new Date('2024-02-20'),
+            priority: 3,
+            description: 'Description de la tâche 3 du Projet 2',
+          },
+          {
+            id: 6n,
+            title: 'Tâche 4',
+            isAchieved: false,
+            deadLine: new Date('2024-02-20'),
+            priority: 3,
+            description: 'Description de la tâche 4 du Projet 2',
+          },
+          {
+            id: 7n,
+            title: 'Tâche 5',
+            isAchieved: false,
+            deadLine: new Date('2024-02-20'),
+            priority: 3,
+            description: 'Description de la tâche 5 du Projet 2',
           }
         ]
       }
@@ -83,8 +108,19 @@ export class ProjectDetailsComponent implements OnInit {
     this.selectedProject = project;
   }
 
+  addTask(): void {
+    if (this.selectedProject && this.newTaskTitle.trim()) {
+      const newTask: Task = {
+        id: BigInt(this.selectedProject.tasks.length + 1),
+        title: this.newTaskTitle,
+        isAchieved: false,
+        deadLine: new Date(),
+        priority: 1,
+        description: ''
+      };
 
-  viewProject(project: Project): void {
-    this.selectedProject = project;
+      this.selectedProject.tasks.push(newTask);
+      this.newTaskTitle = '';
+    }
   }
 }

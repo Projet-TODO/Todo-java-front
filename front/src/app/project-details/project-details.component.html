@@ -26,4 +26,15 @@
       [task]="task">
     </task-item>
   </div>
+  <div class="input-container" *ngIf="selectedProject">
+    <input
+      type="text"
+      class="text-input"
+      placeholder="Créez une nouvelle tâche..."
+      [(ngModel)]="newTaskTitle"
+    />
+    <button class="submit-button" (click)="addTask()">
+      <i class="fas fa-paper-plane"></i>
+    </button>
+  </div>
 </div>

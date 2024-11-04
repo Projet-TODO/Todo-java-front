@@ -1,13 +1,21 @@
 <div class="task-item">
   <div class="initial-section">
     <i class="task-status-icon"
-      [ngClass]="task.isAchieved ? 'fas fa-check completed' : 'fas fa-check not-completed'"
-      (click)="toggleTaskStatus(task)">
+       [ngClass]="task.isAchieved ? 'fas fa-check completed' : 'fas fa-check not-completed'"
+       (click)="toggleTaskStatus(task)">
     </i>
 
     <span>{{ task.title }}</span>
-    <i class="fa-solid fa-chevron-down"></i>
+    <button class="dropdown-button" (click)="toggleDropdown()">
+      <i class="fa-solid fa-chevron-down" [class.rotated]="isDropdownOpen"></i>
+    </button>
   </div>
-  <div class="drop-down-section">
+
+  <div class="drop-down-section" *ngIf="isDropdownOpen" [@dropdownAnimation]>
+    <p class="task-description">{{ task.description }}</p>
+    <div class="action-buttons">
+      <button (click)="editTask(task)">Modifier</button>
+      <button (click)="deleteTask(task)">Supprimer</button>
+    </div>
   </div>
 </div>
