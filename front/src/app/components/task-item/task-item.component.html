@@ -1,0 +1,49 @@
+<div class="task-item">
+  <div class="initial-section">
+    <i class="task-status-icon"
+       [ngClass]="task.isAchieved ? 'fas fa-check completed' : 'fas fa-check not-completed'"
+       (click)="toggleTaskStatus(task)">
+    </i>
+
+    <span *ngIf="!isEditing" class="task-title">{{ task.title }}</span>
+    <input *ngIf="isEditing" [(ngModel)]="editedTask.title" class="task-title-input"/>
+
+    <button class="dropdown-button" (click)="toggleDropdown()">
+      <i class="fa-solid fa-chevron-down" [class.rotated]="isDropdownOpen"></i>
+    </button>
+  </div>
+
+  <div class="drop-down-section" *ngIf="isDropdownOpen" [@dropdownAnimation]>
+
+    <div class="task-description">
+      <strong>Description : </strong>
+      <span *ngIf="!isEditing">{{ task.description }}</span>
+      <textarea *ngIf="isEditing" [(ngModel)]="editedTask.description" class="task-description-input"></textarea>
+    </div>
+
+    <div class="task-deadline">
+      <strong>Date limite : </strong>
+      <span *ngIf="!isEditing">{{ task.deadLine | date: 'dd/MM/yyyy' }}</span>
+      <input *ngIf="isEditing" [(ngModel)]="editedTask.deadLine" type="date" class="task-deadline-input"/>
+    </div>
+
+    <div class="task-priority">
+      <strong>Priorité : </strong>
+      <span *ngIf="!isEditing">
+        {{ task.priority === 1 ? 'Haute' : task.priority === 2 ? 'Moyenne' : 'Basse' }}
+      </span>
+      <select *ngIf="isEditing" [(ngModel)]="editedTask.priority" class="task-priority-input">
+        <option value="1">Haute</option>
+        <option value="2">Moyenne</option>
+        <option value="3">Basse</option>
+      </select>
+    </div>
+
+    <div class="action-buttons">
+      <button *ngIf="!isEditing" (click)="startEdit()">Modifier</button>
+      <button *ngIf="isEditing" (click)="saveEdit()">Valider</button>
+      <button *ngIf="isEditing" (click)="cancelEdit()">Annuler</button>
+      <button (click)="deleteTask()">Supprimer</button>
+    </div>
+  </div>
+</div>

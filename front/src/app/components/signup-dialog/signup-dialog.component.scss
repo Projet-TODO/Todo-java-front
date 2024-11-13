@@ -1,0 +1,21 @@
+@use "src/theme";
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.submit-button{
+  background-color: theme.$common-purple;
+}

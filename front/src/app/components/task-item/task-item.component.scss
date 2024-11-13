@@ -1,0 +1,119 @@
+@use "src/theme";
+
+.task-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80%;
+  background-color: theme.$grey;
+  padding: 15px;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  position: relative;
+
+  .initial-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .task-status-icon {
+      margin-right: 10px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 50%;
+      padding: 10px;
+
+      &.completed {
+        color: theme.$green;
+        border: 1px solid theme.$green;
+      }
+
+      &.not-completed {
+        color: theme.$dark-grey;
+        border: 1px solid theme.$dark-grey;
+      }
+    }
+
+    .dropdown-button {
+      background-color: transparent;
+      color: theme.$dark-grey;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 5px;
+
+      i {
+        transition: transform 0.3s ease;
+      }
+
+      .rotated {
+        transform: rotate(180deg);
+      }
+
+      &:hover {
+        color: theme.$green;
+      }
+    }
+  }
+
+  .drop-down-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 10px;
+    background-color: theme.$grey;
+    padding: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+
+    .task-description, .task-deadline, .task-priority {
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      color: black;
+    }
+
+    .task-title-input, .task-description-input, .task-deadline-input, .task-priority-input {
+      width: 100%;
+      padding: 5px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+
+    .task-title-input {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .task-description-input {
+      height: 100px;
+    }
+
+    .task-priority-input {
+      padding: 5px;
+    }
+
+    .action-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 100%;
+
+      button {
+        background-color: theme.$dark-grey;
+        color: black;
+        border: solid 1px theme.$dark-grey;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+
+        &:hover {
+          border: solid 1px theme.$really-dark-grey;
+          transition: ease-in-out 0.3s;
+        }
+      }
+    }
+  }
+}

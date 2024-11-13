@@ -1,0 +1,59 @@
+@use "src/theme";
+
+.home-container {
+  height: calc(100vh - 255px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-label {
+  font-size: 1.2rem;
+  color: theme.$white;
+  margin-bottom: 10px;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.text-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid theme.$grey;
+  border-radius: 8px 0 0 8px;
+  font-size: 1rem;
+  width: 500px;
+}
+
+.submit-button {
+  padding: 11.5px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  background-color: #6200ea;
+  color: theme.$white;
+  cursor: pointer;
+  margin-left: -2px;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit-button i {
+  font-size: 1.2rem;
+}
+
+.submit-button:hover {
+  background-color: #3700b3;
+}

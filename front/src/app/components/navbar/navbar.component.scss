@@ -1,0 +1,45 @@
+@use "src/theme";
+
+nav {
+  height: 120px;
+  background: transparent;
+
+  .nav-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.nav-title {
+  font-size: 4rem;
+  color: theme.$white;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+.nav-links {
+  display: flex;
+  margin-left: auto;
+}
+
+.mat-nav-list {
+  padding-inline: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.mat-list-base .mat-list-item {
+  font-size: large;
+  color: theme.$white;
+  transition: 0.3s;
+  width: max-content;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
