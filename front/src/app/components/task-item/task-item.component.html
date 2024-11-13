@@ -5,17 +5,45 @@
        (click)="toggleTaskStatus(task)">
     </i>
 
-    <span>{{ task.title }}</span>
+    <span *ngIf="!isEditing" class="task-title">{{ task.title }}</span>
+    <input *ngIf="isEditing" [(ngModel)]="editedTask.title" class="task-title-input"/>
+
     <button class="dropdown-button" (click)="toggleDropdown()">
       <i class="fa-solid fa-chevron-down" [class.rotated]="isDropdownOpen"></i>
     </button>
   </div>
 
   <div class="drop-down-section" *ngIf="isDropdownOpen" [@dropdownAnimation]>
-    <p class="task-description">{{ task.description }}</p>
+
+    <div class="task-description">
+      <strong>Description : </strong>
+      <span *ngIf="!isEditing">{{ task.description }}</span>
+      <textarea *ngIf="isEditing" [(ngModel)]="editedTask.description" class="task-description-input"></textarea>
+    </div>
+
+    <div class="task-deadline">
+      <strong>Date limite : </strong>
+      <span *ngIf="!isEditing">{{ task.deadLine | date: 'dd/MM/yyyy' }}</span>
+      <input *ngIf="isEditing" [(ngModel)]="editedTask.deadLine" type="date" class="task-deadline-input"/>
+    </div>
+
+    <div class="task-priority">
+      <strong>Priorité : </strong>
+      <span *ngIf="!isEditing">
+        {{ task.priority === 1 ? 'Haute' : task.priority === 2 ? 'Moyenne' : 'Basse' }}
+      </span>
+      <select *ngIf="isEditing" [(ngModel)]="editedTask.priority" class="task-priority-input">
+        <option value="1">Haute</option>
+        <option value="2">Moyenne</option>
+        <option value="3">Basse</option>
+      </select>
+    </div>
+
     <div class="action-buttons">
-      <button (click)="editTask(task)">Modifier</button>
-      <button (click)="deleteTask(task)">Supprimer</button>
+      <button *ngIf="!isEditing" (click)="startEdit()">Modifier</button>
+      <button *ngIf="isEditing" (click)="saveEdit()">Valider</button>
+      <button *ngIf="isEditing" (click)="cancelEdit()">Annuler</button>
+      <button (click)="deleteTask()">Supprimer</button>
     </div>
   </div>
 </div>

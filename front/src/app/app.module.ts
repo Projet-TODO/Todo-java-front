@@ -3,12 +3,15 @@ import { BrowserModule } from "@angular/platform-browser"
 
 import { AppRoutingModule } from "app-routing.module"
 import { AppComponent } from "app.component"
+
 import { HomeComponent } from "pages/home/home.component"
+import { CreateProjectComponent } from "pages/create-project/create-project.component."
+import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
+
 import { NavbarComponent } from "components/navbar/navbar.component"
 import { FooterComponent } from "components/footer/footer.component";
 import { SignupDialogComponent } from './components/signup-dialog/signup-dialog.component';
 import { SigninDialogComponent } from './components/signin-dialog/signin-dialog.component';
-import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
 import { TaskItemCompnent } from './components/task-item/task-item.component';
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
@@ -22,6 +25,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
+import { CreateProjectService } from "services/create-project.service"
+import { ProjectDetailsService } from "services/project-details.service"
+import { SharedDataService } from "services/shared-data.service"
 
 
 @NgModule({
@@ -34,6 +40,7 @@ import { MatInputModule } from '@angular/material/input';
     SigninDialogComponent,
     ProjectDetailsComponent,
     TaskItemCompnent,
+    CreateProjectComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,7 @@ import { MatInputModule } from '@angular/material/input';
   exports: [
     TaskItemCompnent,
   ],
-  providers: [],
+  providers: [CreateProjectService, ProjectDetailsService, SharedDataService],
   bootstrap: [AppComponent],
   entryComponents: [SignupDialogComponent, SigninDialogComponent]
 })

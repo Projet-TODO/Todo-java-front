@@ -1,3 +1,14 @@
 <footer class="footer">
-  <div class="runner"></div>
+  <div *ngIf="isLoading; else copyright" class="loading-container">
+    <div class="runner"></div>
+    <div class="loading">
+      <p>LOADING ...</p>
+    </div>
+  </div>
+
+  <ng-template #copyright>
+    <div class="copyright">
+      <p>&copy; 2024 Alban Alexis Elio. Tous droits réservés.</p>
+    </div>
+  </ng-template>
 </footer>

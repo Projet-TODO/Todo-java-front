@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Project } from 'models/project.model';
 import { Task } from 'models/task.model';
 import { User } from 'models/user.model';
@@ -14,7 +15,7 @@ export class ProjectDetailsComponent implements OnInit {
   selectedProject: Project | null = null;
   newTaskTitle: string = '';
 
-  constructor() {
+  constructor(private router: Router) {
     const user1: User = { id: 1n, firstname: 'Alice', email: 'alice@example.com', lastname: 'Doe', password: '123456' };
     const user2: User = { id: 2n, firstname: 'Bob', email: 'bob@example.com', lastname: 'Dylan', password: '123456' };
 
@@ -94,15 +95,12 @@ export class ProjectDetailsComponent implements OnInit {
     ];
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
 
   addProject(): void {
-    console.log('Ajouter un projet');
+    this.router.navigate(['/create-project']);
   }
-
 
   selectProject(project: Project): void {
     this.selectedProject = project;
@@ -121,6 +119,24 @@ export class ProjectDetailsComponent implements OnInit {
 
       this.selectedProject.tasks.push(newTask);
       this.newTaskTitle = '';
+    }
+  }
+
+  deleteTask(task: Task): void {
+    if (this.selectedProject) {
+      const index = this.selectedProject.tasks.findIndex(t => t.id === task.id);
+      if (index !== -1) {
+        this.selectedProject.tasks.splice(index, 1);
+      }
+    }
+  }
+
+  updateTask(updatedTask: Task): void {
+    if (this.selectedProject) {
+      const index = this.selectedProject.tasks.findIndex(t => t.id === updatedTask.id);
+      if (index !== -1) {
+        this.selectedProject.tasks[index] = updatedTask;
+      }
     }
   }
 }

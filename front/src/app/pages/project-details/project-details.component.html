@@ -19,13 +19,6 @@
   </div>
 
   <h1 class="selected-project-title">{{ selectedProject?.title }}</h1>
-  <div class="tasks-list" *ngIf="selectedProject">
-    <task-item
-      class="task-item"
-      *ngFor="let task of selectedProject.tasks"
-      [task]="task">
-    </task-item>
-  </div>
   <div class="input-container" *ngIf="selectedProject">
     <input
       type="text"
@@ -36,5 +29,14 @@
     <button class="submit-button" (click)="addTask()">
       <i class="fas fa-paper-plane"></i>
     </button>
+  </div>
+  <div class="tasks-list" *ngIf="selectedProject">
+    <task-item
+      class="task-item"
+      *ngFor="let task of selectedProject.tasks"
+      [task]="task"
+      (delete)="deleteTask($event)"
+      (update)="updateTask($event)">
+    </task-item>
   </div>
 </div>

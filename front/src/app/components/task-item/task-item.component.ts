@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Task } from '../../models/task.model';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
@@ -20,7 +20,12 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class TaskItemCompnent implements OnInit {
   @Input() task!: Task;
+  @Output() delete = new EventEmitter<Task>();
+  @Output() update = new EventEmitter<Task>();
+
   isDropdownOpen = false;
+  isEditing = false;
+  editedTask: Task = { ...this.task };
 
   constructor() {
   }
@@ -36,13 +41,30 @@ export class TaskItemCompnent implements OnInit {
     console.log('Modifier la tâche:', task.title);
   }
 
-  deleteTask(task: Task): void {
-    console.log('Supprimer la tâche:', task.title);
+  deleteTask(): void {
+    this.delete.emit(this.task);
   }
 
   toggleTaskStatus(task: Task): void {
-    console.log('Changer le statut de la tâche:', task.title);
     task.isAchieved = !task.isAchieved;
+  }
+
+  startEdit(): void {
+    this.isEditing = true;
+    this.editedTask = { ...this.task };
+    console.log('Modifier la tâche:', this.task);
+  }
+
+  saveEdit(): void {
+    this.task = { ...this.editedTask };
+    console.log('Sauvegarder la tâche:', this.editedTask);
+    this.isEditing = false;
+    this.update.emit(this.task);
+  }
+
+  cancelEdit(): void {
+    this.isEditing = false;
+    this.editedTask = { ...this.task };
   }
 
 }

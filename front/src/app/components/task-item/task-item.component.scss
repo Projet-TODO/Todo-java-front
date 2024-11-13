@@ -69,10 +69,30 @@
     border-radius: 10px;
     overflow: hidden;
 
-    .task-description {
+    .task-description, .task-deadline, .task-priority {
       margin-bottom: 10px;
       font-size: 0.9rem;
       color: black;
+    }
+
+    .task-title-input, .task-description-input, .task-deadline-input, .task-priority-input {
+      width: 100%;
+      padding: 5px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+
+    .task-title-input {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .task-description-input {
+      height: 100px;
+    }
+
+    .task-priority-input {
+      padding: 5px;
     }
 
     .action-buttons {

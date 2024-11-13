@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core"
+import { Router } from "@angular/router";
+import { SharedDataService } from "services/shared-data.service";
 
 @Component({
   selector: "epf-home",
@@ -6,11 +8,14 @@ import { Component, OnInit } from "@angular/core"
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
+  projectTitle: string = '';
 
-  constructor() {
+  constructor(private router: Router, private sharedDataService: SharedDataService) { }
+
+  ngOnInit(): void { }
+
+  navigateToCreateProject(): void {
+    this.sharedDataService.setProjectTitle(this.projectTitle);
+    this.router.navigate(['/create-project']);
   }
-
-  ngOnInit(): void {
-  }
-
 }

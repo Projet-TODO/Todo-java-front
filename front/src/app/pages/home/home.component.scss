@@ -30,7 +30,7 @@
 .text-input {
   flex: 1;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid theme.$grey;
   border-radius: 8px 0 0 8px;
   font-size: 1rem;
   width: 500px;
@@ -41,7 +41,7 @@
   border: none;
   border-radius: 0 8px 8px 0;
   background-color: #6200ea;
-  color: white;
+  color: theme.$white;
   cursor: pointer;
   margin-left: -2px;
   transition: background-color 0.3s;
