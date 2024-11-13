@@ -3,31 +3,21 @@ import { RouterModule, Routes } from "@angular/router"
 import { CreateProjectComponent } from "pages/create-project/create-project.component."
 import { HomeComponent } from "pages/home/home.component"
 import { ProjectDetailsComponent } from "pages/project-details/project-details.component"
+import { ProjectResolver } from "pages/project-details/project-details.resolver"
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   {
     path: "projects",
-    component: ProjectDetailsComponent
+    component: ProjectDetailsComponent,
+    resolve: {
+      projects: ProjectResolver,
+    },
   },
   {
     path: "create-project",
     component: CreateProjectComponent
   }
-  // {
-  //   path: "majors",
-  //   component: MajorsComponent,
-  //   resolve: {
-  //     majors: MajorsResolver,
-  //   },
-  // },
-  // {
-  //   path: "major-students/:id",
-  //   component: MajorStudentsComponent,
-  //   resolve: {
-  //     studentsFromMajor: MajorStudentsResolver,
-  //   },
-  // },
 ]
 
 @NgModule({
