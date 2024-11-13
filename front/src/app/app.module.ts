@@ -3,13 +3,13 @@ import { BrowserModule } from "@angular/platform-browser"
 
 import { AppRoutingModule } from "app-routing.module"
 import { AppComponent } from "app.component"
-import { HomeComponent } from "home/home.component"
-import { NavbarComponent } from "navbar/navbar.component"
-import { FooterComponent } from "footer/footer.component";
-import { SignupDialogComponent } from './signup-dialog/signup-dialog.component';
-import { SigninDialogComponent } from './signin-dialog/signin-dialog.component';
-import { ProjectDetailsComponent } from './project-details/project-details.component';
-import { TaskItemCompnent } from './project-details/task-item/task-item.component';
+import { HomeComponent } from "pages/home/home.component"
+import { NavbarComponent } from "components/navbar/navbar.component"
+import { FooterComponent } from "components/footer/footer.component";
+import { SignupDialogComponent } from './components/signup-dialog/signup-dialog.component';
+import { SigninDialogComponent } from './components/signin-dialog/signin-dialog.component';
+import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
+import { TaskItemCompnent } from './components/task-item/task-item.component';
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
 import { MatListModule } from "@angular/material/list"
