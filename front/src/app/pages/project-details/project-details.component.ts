@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from 'models/project.model';
 import { Task } from 'models/task.model';
-import { User } from 'models/user.model';
 import { map, Observable } from 'rxjs';
 
 @Component({
