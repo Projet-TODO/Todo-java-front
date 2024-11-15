@@ -38,7 +38,7 @@ export class TaskItemCompnent implements OnInit {
   }
 
   editTask(task: Task): void {
-    console.log('Modifier la tâche:', task.title);
+    console.log('Modifier la tâche:', task.title_task);
   }
 
   deleteTask(): void {
@@ -46,7 +46,7 @@ export class TaskItemCompnent implements OnInit {
   }
 
   toggleTaskStatus(task: Task): void {
-    task.isAchieved = !task.isAchieved;
+    task.achieved_task = !task.achieved_task;
   }
 
   startEdit(): void {

@@ -36,11 +36,11 @@ export class ProjectDetailsComponent implements OnInit {
   addTask(): void {
     if (this.selectedProject && this.newTaskTitle.trim()) {
       const newTask: Task = {
-        title: this.newTaskTitle,
-        isAchieved: false,
-        deadLine: new Date(),
-        priority: 1,
-        description: '',
+        title_task: this.newTaskTitle,
+        achieved_task: false,
+        deadline_task: new Date(),
+        priority_task: 1,
+        description_task: '',
         project: this.selectedProject,
       };
 
@@ -51,7 +51,7 @@ export class ProjectDetailsComponent implements OnInit {
 
   deleteTask(task: Task): void {
     if (this.selectedProject) {
-      const index = this.selectedProject.tasks.findIndex(t => t.id === task.id);
+      const index = this.selectedProject.tasks.findIndex(t => t.id_task === task.id_task);
       if (index !== -1) {
         this.selectedProject.tasks.splice(index, 1);
       }
@@ -60,7 +60,7 @@ export class ProjectDetailsComponent implements OnInit {
 
   updateTask(updatedTask: Task): void {
     if (this.selectedProject) {
-      const index = this.selectedProject.tasks.findIndex(t => t.id === updatedTask.id);
+      const index = this.selectedProject.tasks.findIndex(t => t.id_task === updatedTask.id_task);
       if (index !== -1) {
         this.selectedProject.tasks[index] = updatedTask;
       }

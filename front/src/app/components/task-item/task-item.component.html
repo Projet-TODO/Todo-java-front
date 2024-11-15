@@ -1,12 +1,12 @@
 <div class="task-item">
   <div class="initial-section">
     <i class="task-status-icon"
-       [ngClass]="task.isAchieved ? 'fas fa-check completed' : 'fas fa-check not-completed'"
+       [ngClass]="task.achieved_task ? 'fas fa-check completed' : 'fas fa-check not-completed'"
        (click)="toggleTaskStatus(task)">
     </i>
 
-    <span *ngIf="!isEditing" class="task-title">{{ task.title }}</span>
-    <input *ngIf="isEditing" [(ngModel)]="editedTask.title" class="task-title-input"/>
+    <span *ngIf="!isEditing" class="task-title">{{ task.title_task }}</span>
+    <input *ngIf="isEditing" [(ngModel)]="editedTask.title_task" class="task-title-input"/>
 
     <button class="dropdown-button" (click)="toggleDropdown()">
       <i class="fa-solid fa-chevron-down" [class.rotated]="isDropdownOpen"></i>
@@ -17,22 +17,22 @@
 
     <div class="task-description">
       <strong>Description : </strong>
-      <span *ngIf="!isEditing">{{ task.description }}</span>
-      <textarea *ngIf="isEditing" [(ngModel)]="editedTask.description" class="task-description-input"></textarea>
+      <span *ngIf="!isEditing">{{ task.description_task }}</span>
+      <textarea *ngIf="isEditing" [(ngModel)]="editedTask.description_task" class="task-description-input"></textarea>
     </div>
 
     <div class="task-deadline">
       <strong>Date limite : </strong>
-      <span *ngIf="!isEditing">{{ task.deadLine | date: 'dd/MM/yyyy' }}</span>
-      <input *ngIf="isEditing" [(ngModel)]="editedTask.deadLine" type="date" class="task-deadline-input"/>
+      <span *ngIf="!isEditing">{{ task.deadline_task | date: 'dd/MM/yyyy' }}</span>
+      <input *ngIf="isEditing" [(ngModel)]="editedTask.deadline_task" type="date" class="task-deadline-input"/>
     </div>
 
     <div class="task-priority">
       <strong>Priorité : </strong>
       <span *ngIf="!isEditing">
-        {{ task.priority === 1 ? 'Haute' : task.priority === 2 ? 'Moyenne' : 'Basse' }}
+        {{ task.priority_task === 1 ? 'Haute' : task.priority_task === 2 ? 'Moyenne' : 'Basse' }}
       </span>
-      <select *ngIf="isEditing" [(ngModel)]="editedTask.priority" class="task-priority-input">
+      <select *ngIf="isEditing" [(ngModel)]="editedTask.priority_task" class="task-priority-input">
         <option value="1">Haute</option>
         <option value="2">Moyenne</option>
         <option value="3">Basse</option>

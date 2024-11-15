@@ -1,11 +1,11 @@
 import { Project } from "./project.model"
 
 export interface Task {
-  id?: number;
-  title: string;
-  isAchieved: boolean;
-  deadLine: Date;
-  priority: number;
-  description: string;
+  id_task?: number;
+  title_task: string;
+  achieved_task: boolean;
+  deadline_task: Date;
+  priority_task: number;
+  description_task: string;
   project: Project;
 }

@@ -4,5 +4,5 @@ export interface Project {
   name_project: string;
   tasks: Task[];
   date_project: Date;
-  id_users: number;
+  user: User;
 }
