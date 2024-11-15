@@ -4,23 +4,37 @@
 
     <div class="input-wrapper">
       <label class="input-label" for="project-title">Titre du projet</label>
-      <input type="text" id="project-title" class="text-input" placeholder="Entrez le titre du projet" [(ngModel)]="projectTitle"/>
+      <input
+        type="text"
+        id="project-title"
+        class="text-input"
+        placeholder="Entrez le titre du projet"
+        [(ngModel)]="projectTitle"
+      />
     </div>
 
     <div class="input-wrapper">
       <label class="input-label" for="project-description">Description du projet</label>
-      <textarea id="project-description" class="text-input" placeholder="Entrez la description du projet"></textarea>
+      <textarea
+        id="project-description"
+        class="text-input"
+        placeholder="Entrez la description du projet"
+        [(ngModel)]="projectDescription"
+      ></textarea>
     </div>
 
     <div class="input-wrapper">
       <label class="input-label" for="project-end-date">Date de fin du projet</label>
-      <input type="date" id="project-end-date" class="text-input" />
+      <input
+        type="date"
+        id="project-end-date"
+        class="text-input"
+        [(ngModel)]="projectEndDate"
+      />
     </div>
 
     <div class="submit-button-wrapper">
-      <button class="submit-button" (click)="submitProject()">
-        Soumettre le projet
-      </button>
+      <button class="submit-button" (click)="submitProject()">Soumettre le projet</button>
     </div>
   </div>
 </div>
