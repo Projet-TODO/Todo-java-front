@@ -10,7 +10,7 @@
 
     <div class="project-list">
       <div class="project-item" *ngFor="let project of projects" (click)="selectProject(project)">
-        <span>{{ project.title }}</span>
+        <span>{{ project.name_project }}</span>
         <button class="play-project-button">
           <i class="fas fa-play"></i>
         </button>
@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <h1 class="selected-project-title">{{ selectedProject?.title }}</h1>
+  <h1 class="selected-project-title">{{ selectedProject?.name_project }}</h1>
   <div class="input-container" *ngIf="selectedProject">
     <input
       type="text"

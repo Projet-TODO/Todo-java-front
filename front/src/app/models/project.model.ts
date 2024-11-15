@@ -2,9 +2,9 @@ import { Task } from "./task.model"
 import { User } from "./user.model"
 
 export interface Project {
-  id?: bigint
-  title: string;
+  id?: number;
+  name_project: string;
   tasks: Task[];
-  date: Date;
-  user: User;
+  date_project: Date;
+  id_users: number;
 }
