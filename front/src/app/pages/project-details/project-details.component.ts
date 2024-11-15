@@ -19,6 +19,7 @@ export class ProjectDetailsComponent implements OnInit {
   constructor(private router: Router, private _route: ActivatedRoute) {
     this.projects$.subscribe((projects) => {
       this.projects = projects
+      console.log(this.projects)
     })
 
     // const user1: User = { id: 1n, firstname: 'Alice', email: 'alice@example.com', lastname: 'Doe', password: '123456' };
