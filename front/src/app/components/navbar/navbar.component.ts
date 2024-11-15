@@ -34,7 +34,5 @@ export class NavbarComponent {
   }
   logout(): void {
     this.authService.logout();
-    console.log("Logged out");
-    console.log(localStorage.getItem("user"));
   }
 }

@@ -13,11 +13,10 @@ export class ProjectDetailsService {
 
   private projectUrl = `${environment.API_URL}/project`;
 
-  findAll(): Observable<Project[]> {
-    console.log(this.projectUrl)
-    const project = this.http.get<Project[]>(this.projectUrl)
-    console.log(project)
-    return project
+  findByUser(id: number): Observable<Project[]> {
+    const url = `${this.projectUrl}/user/${id}`;
+    console.log(url);
+    return this.http.get<Project[]>(url);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from 'rxjs';
 import { Task } from "../models/task.model";
+import { ProjectDetails } from "models/projectDetails.model";
 
 @Injectable({
   providedIn: "root",
@@ -12,7 +13,7 @@ export class SharedDataService {
   isLoading$ = this.isLoadingSubject.asObservable();
 
   private generatedTasks: Task[] = [];
-  private projectDetails: {} = {};
+  private projectDetails: ProjectDetails = { name_project: '', tasks: [], date_project: '' };
 
   setProjectTitle(title: string) {
     this.projectTitle = title;
@@ -30,11 +31,11 @@ export class SharedDataService {
     return this.generatedTasks;
   }
 
-  setProjectDetails(details: {}) {
+  setProjectDetails(details: ProjectDetails) {
     this.projectDetails = details;
   }
 
-  getProjectDetails(): {} {
+  getProjectDetails(): ProjectDetails {
     return this.projectDetails;
   }
 

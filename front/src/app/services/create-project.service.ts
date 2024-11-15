@@ -23,13 +23,15 @@ export class CreateProjectService {
     return response;
   }
 
-  saveProject(project: Project): void {
+  saveProject(project: Project): Observable<Project> {
     const url = `${this.projectUrl}/project`;
-    this.http.post(url, project).subscribe();
+    const reponse = this.http.post<Project>(url, project);
+    return reponse;
   }
 
-  saveTask(task: Task): void {
+  saveTask(task: Task): Observable<Task> {
     const url = `${this.projectUrl}/tasks`;
-    this.http.post(url, task).subscribe();
+    const reponse = this.http.post<Task>(url, task);
+    return reponse;
   }
 }

@@ -15,7 +15,6 @@ export class AuthenticationService {
 
   authenticate(email: string, password: string) : Observable<any> {
     const url = `${this.authUrl}/login`
-    console.log("Authenticating...")
     const options = {
       params: new HttpParams().set("email", email).set("password", password),
     }

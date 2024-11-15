@@ -4,6 +4,8 @@ import { CreateProjectService } from "services/create-project.service";
 import { SharedDataService } from "services/shared-data.service";
 import { Project } from "models/project.model";
 import { User } from "models/user.model";
+import { ProjectDetails } from "models/projectDetails.model";
+import { tap } from "rxjs";
 
 @Component({
   selector: "epf-create-project",
@@ -14,8 +16,6 @@ export class CreateProjectComponent implements OnInit {
   projectTitle: string = '';
   projectDescription: string = "";
   projectEndDate: string = "";
-
-  connected: boolean = true;
 
   constructor(
     private sharedDataService: SharedDataService,
@@ -33,8 +33,9 @@ export class CreateProjectComponent implements OnInit {
       return;
     }
 
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
     const formattedDate = this.formatDateToBackend(new Date(this.projectEndDate));
-    const projectDetails = {
+    const projectDetails: ProjectDetails = {
       tasks: [],
       name_project: this.projectTitle,
       date_project: formattedDate,
@@ -46,25 +47,32 @@ export class CreateProjectComponent implements OnInit {
       const response = await this.projectService.generateTasks(projectDetails, this.projectDescription).toPromise();
       this.sharedDataService.setLoadingState(false);
 
-      if (this.connected) {
-        const user: User = { id_users: 1, first_name_users: 'John', email: 'john.doe@example.com', last_name_users: 'Doe', password_users: 'password1' };
-        localStorage.setItem('user', JSON.stringify(user));
-        if (user.id_users !== undefined) {
-          const project : Project = { name_project: this.projectTitle, date_project: new Date(this.projectEndDate), id_users: user.id_users, tasks: [] };
-          this.projectService.saveProject(project);
-        }
+      if (Object.keys(user).length !== 0) {
+        const project: Project = {
+          name_project: this.projectTitle,
+          date_project: new Date(this.projectEndDate),
+          user: user,
+          tasks: []
+        };
 
-        // this.projectService.saveProject(project);
-        // for (let task of response) {
-        //   this.projectService.saveTask(task);
-        // }
-        console.log("OK !!");
+        this.projectService.saveProject(project)
+          .pipe(
+            tap((savedProject: Project) => {
+              for (let task of response) {
+                task.project = savedProject;
+                this.projectService.saveTask(task).subscribe();
+              }
+            }),
+            tap(() => {
+              this.router.navigate(['/projects']);
+            })
+          )
+          .subscribe();
       } else {
         this.sharedDataService.setGeneratedTasks(response);
         this.sharedDataService.setProjectDetails(projectDetails);
-        console.log(response);
+        this.router.navigate(['/projects']);
       }
-      // this.router.navigate(['/projects']);
     } catch (error) {
       this.sharedDataService.setLoadingState(false);
       alert("Une erreur est survenue lors de la génération des tâches.");
