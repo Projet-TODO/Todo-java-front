@@ -9,12 +9,28 @@ import { environment } from "../../environments/environment"
   providedIn: "root",
 })
 export class AuthenticationService {
-  private authUrl = `${environment.API_URL}/auth`
+  private authUrl = `${environment.API_URL}`
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+
+  signup(user: any): Observable<any> {
+    const url = `${this.authUrl}/users`
+    const options = {
+    }
+    console.log("Signing up...")
+    console.log(JSON.stringify(user))
+    return this.http.post(url, user, {
+      headers: { 'Content-Type': 'application/json' }
+    }).pipe(
+      tap(() => {
+        console.log("Signed up successfully")
+      }),
+      catchError(this.handleError("signup")),
+    )
+  }
 
   authenticate(email: string, password: string) : Observable<any> {
-    const url = `${this.authUrl}/login`
+    const url = `${this.authUrl}/auth/login`
     console.log("Authenticating...")
     const options = {
       params: new HttpParams().set("email", email).set("password", password),

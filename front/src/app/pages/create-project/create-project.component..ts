@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 import { CreateProjectService } from "services/create-project.service";
 import { SharedDataService } from "services/shared-data.service";
 import { Project } from "models/project.model";
-import { User } from "models/user.model";
+import { Users } from "models/user.model";
 
 @Component({
   selector: "epf-create-project",
@@ -47,7 +47,7 @@ export class CreateProjectComponent implements OnInit {
       this.sharedDataService.setLoadingState(false);
 
       if (this.connected) {
-        const user: User = { id_users: 1, first_name_users: 'John', email: 'john.doe@example.com', last_name_users: 'Doe', password_users: 'password1' };
+        const user: Users = { id_users: 1, first_name_users: 'John', email: 'john.doe@example.com', last_name_users: 'Doe', password_users: 'password1' };
         localStorage.setItem('user', JSON.stringify(user));
         if (user.id_users !== undefined) {
           const project : Project = { name_project: this.projectTitle, date_project: new Date(this.projectEndDate), id_users: user.id_users, tasks: [] };
