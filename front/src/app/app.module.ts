@@ -16,7 +16,7 @@ import { TaskItemCompnent } from './components/task-item/task-item.component';
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
 import { MatListModule } from "@angular/material/list"
-import { FormsModule } from "@angular/forms"
+import { FormsModule, ReactiveFormsModule } from "@angular/forms"
 import { MatIconModule } from "@angular/material/icon"
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -52,9 +52,11 @@ import { SharedDataService } from "services/shared-data.service"
     MatButtonModule,
     HttpClientModule,
     MatDialogModule,
+    MatListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    ReactiveFormsModule
   ],
   exports: [
     TaskItemCompnent,
