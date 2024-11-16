@@ -37,10 +37,6 @@ export class TaskItemCompnent implements OnInit {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
-  editTask(task: Task): void {
-    console.log('Modifier la tâche:', task.title_task);
-  }
-
   deleteTask(): void {
     this.delete.emit(this.task);
   }
@@ -52,12 +48,10 @@ export class TaskItemCompnent implements OnInit {
   startEdit(): void {
     this.isEditing = true;
     this.editedTask = { ...this.task };
-    console.log('Modifier la tâche:', this.task);
   }
 
   saveEdit(): void {
     this.task = { ...this.editedTask };
-    console.log('Sauvegarder la tâche:', this.editedTask);
     this.isEditing = false;
     this.update.emit(this.task);
   }
