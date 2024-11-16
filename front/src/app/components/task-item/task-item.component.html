@@ -30,12 +30,12 @@
     <div class="task-priority">
       <strong>Priorité : </strong>
       <span *ngIf="!isEditing">
-        {{ task.priority_task === 1 ? 'Haute' : task.priority_task === 2 ? 'Moyenne' : 'Basse' }}
-      </span>
+    {{ getPriorityLabel(task.priority_task) }}
+  </span>
       <select *ngIf="isEditing" [(ngModel)]="editedTask.priority_task" class="task-priority-input">
-        <option value="1">Haute</option>
-        <option value="2">Moyenne</option>
-        <option value="3">Basse</option>
+        <option value=1>Haute</option>
+        <option value=2>Moyenne</option>
+        <option value=3>Basse</option>
       </select>
     </div>
 

@@ -65,6 +65,7 @@ export class ProjectDetailsComponent implements OnInit {
     if (this.selectedProject) {
       const index = this.selectedProject.tasks.findIndex(t => t.id_task === updatedTask.id_task);
       if (index !== -1) {
+        console.log("task",this.selectedProject.tasks[index],"edited", updatedTask);
         this.projectDetailsService.patchTask(updatedTask).subscribe();
         this.selectedProject.tasks[index] = updatedTask;
       }

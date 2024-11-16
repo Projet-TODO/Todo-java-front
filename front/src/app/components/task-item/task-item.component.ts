@@ -51,7 +51,9 @@ export class TaskItemCompnent implements OnInit {
   }
 
   saveEdit(): void {
+    this.editedTask.priority_task = Number(this.editedTask.priority_task)
     this.task = { ...this.editedTask };
+    console.log("task", this.task, "edited", this.editedTask);
     this.isEditing = false;
     this.update.emit(this.task);
   }
@@ -60,5 +62,18 @@ export class TaskItemCompnent implements OnInit {
     this.isEditing = false;
     this.editedTask = { ...this.task };
   }
+  getPriorityLabel(priority: number): string {
+    console.log("priority", priority);
+    switch ( priority) {
+      case 1:
+        return 'Haute';
+      case 2:
+        return 'Moyenne';
+      case 3:
+        return 'Basse';
+      default:
+        return '';
+    }
 
+  }
 }
