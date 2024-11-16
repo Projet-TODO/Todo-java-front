@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from 'models/project.model';
 import { Task } from 'models/task.model';
 import { map, Observable } from 'rxjs';
+import { ProjectDetailsService } from 'services/project-details.service';
 
 @Component({
   selector: 'epf-project-details',
@@ -15,10 +16,10 @@ export class ProjectDetailsComponent implements OnInit {
   selectedProject: Project | null = null;
   newTaskTitle: string = '';
 
-  constructor(private router: Router, private _route: ActivatedRoute) {
+  constructor(private router: Router, private _route: ActivatedRoute, private projectDetailsService: ProjectDetailsService) {
     this.projects$.subscribe((projects) => {
       this.projects = projects
-      console.log(this.projects)
+
     })
   }
 
@@ -44,6 +45,7 @@ export class ProjectDetailsComponent implements OnInit {
         project: this.selectedProject,
       };
 
+      this.projectDetailsService.saveTask(newTask).subscribe();
       this.selectedProject.tasks.push(newTask);
       this.newTaskTitle = '';
     }
@@ -53,6 +55,7 @@ export class ProjectDetailsComponent implements OnInit {
     if (this.selectedProject) {
       const index = this.selectedProject.tasks.findIndex(t => t.id_task === task.id_task);
       if (index !== -1) {
+        this.projectDetailsService.deleteTask(task).subscribe();
         this.selectedProject.tasks.splice(index, 1);
       }
     }
@@ -62,6 +65,7 @@ export class ProjectDetailsComponent implements OnInit {
     if (this.selectedProject) {
       const index = this.selectedProject.tasks.findIndex(t => t.id_task === updatedTask.id_task);
       if (index !== -1) {
+        this.projectDetailsService.patchTask(updatedTask).subscribe();
         this.selectedProject.tasks[index] = updatedTask;
       }
     }
