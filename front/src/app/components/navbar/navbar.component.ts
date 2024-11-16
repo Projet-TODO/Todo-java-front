@@ -3,6 +3,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { SignupDialogComponent } from "../signup-dialog/signup-dialog.component";
 import { SigninDialogComponent } from "../signin-dialog/signin-dialog.component";
 import { AuthenticationService } from "services/authentication.service";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -13,7 +14,7 @@ import { AuthenticationService } from "services/authentication.service";
 export class NavbarComponent {
   links: [{}] = [{}];
 
-  constructor(public dialog: MatDialog, protected readonly authService: AuthenticationService) {
+  constructor(public dialog: MatDialog, protected readonly authService: AuthenticationService, private router: Router) {
     this.links.push({ name: "Sign up", href: "signup" });
     this.links.push({ name: "Sign in", href: "signin" });
   }
@@ -29,10 +30,16 @@ export class NavbarComponent {
       width: '600px',
     });
   }
+
   isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
   }
+
   logout(): void {
     this.authService.logout();
+  }
+
+  navProject(): void {
+    this.router.navigate(["/projects"]);
   }
 }

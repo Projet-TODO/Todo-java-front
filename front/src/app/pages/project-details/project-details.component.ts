@@ -65,8 +65,23 @@ export class ProjectDetailsComponent implements OnInit {
     if (this.selectedProject) {
       const index = this.selectedProject.tasks.findIndex(t => t.id_task === updatedTask.id_task);
       if (index !== -1) {
-        this.projectDetailsService.patchTask(updatedTask).subscribe();
-        this.selectedProject.tasks[index] = updatedTask;
+        let projectID: number = 0;
+        if (updatedTask.project.name_project !== undefined) {
+          projectID = updatedTask.project.id_project || 0;
+        } else {
+          projectID = Number(updatedTask.project);
+        }
+
+        this.projectDetailsService.getProjectById(projectID).subscribe((project) => {
+          updatedTask.project = project;
+          this.projectDetailsService.patchTask(updatedTask).subscribe(
+            (task) => {
+              if (this.selectedProject && this.selectedProject.tasks) {
+                this.selectedProject.tasks[index] = task;
+              }
+            }
+          );
+        });
       }
     }
   }

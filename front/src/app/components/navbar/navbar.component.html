@@ -1,16 +1,22 @@
 <nav>
   <div class="nav-container">
+    <!-- Logo à gauche -->
+    <img src="assets/logo.png" alt="Logo" class="nav-logo">
+
     <h1 class="nav-title">My TO-DO</h1>
   </div>
-<div *ngIf="!isAuthenticated(); else loggedOut">
-  <mat-nav-list class="nav-links">
-   <a mat-list-item (click)="openSignupDialog()">Sign up</a>
-    <a mat-list-item (click)="openSigninDialog()">Sign in</a>
-  </mat-nav-list>
-</div>
-<ng-template #loggedOut>
-  <mat-nav-list class="nav-links">
-    <a mat-list-item (click)="logout()">Sign out</a>
-  </mat-nav-list>
-</ng-template>
+
+  <div *ngIf="!isAuthenticated(); else loggedOut">
+    <mat-nav-list class="nav-links">
+      <a mat-list-item (click)="openSignupDialog()">Sign up</a>
+      <a mat-list-item (click)="openSigninDialog()">Sign in</a>
+    </mat-nav-list>
+  </div>
+
+  <ng-template #loggedOut>
+    <mat-nav-list class="nav-links">
+      <a mat-list-item (click)="logout()">Sign out</a>
+      <a mat-list-item (click)="navProject()">My Project</a>
+    </mat-nav-list>
+  </ng-template>
 </nav>

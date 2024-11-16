@@ -43,6 +43,7 @@ export class TaskItemCompnent implements OnInit {
 
   toggleTaskStatus(task: Task): void {
     task.achieved_task = !task.achieved_task;
+    this.update.emit(task);
   }
 
   startEdit(): void {

@@ -3,13 +3,19 @@
 nav {
   height: 120px;
   background: transparent;
+  display: flex;
+  align-items: center;
 
   .nav-container {
     height: 100%;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  }
+
+  .nav-logo {
+    height: 60px;
+    width: auto;
+    margin-left: 10px;
+    margin-top: 10px;
   }
 }
 
@@ -19,11 +25,13 @@ nav {
   margin: 0;
   text-align: center;
   flex: 1;
+  font-family: 'Lora', serif;
 }
 
 .nav-links {
   display: flex;
   margin-left: auto;
+  margin-right: 10px;
 }
 
 .mat-nav-list {
