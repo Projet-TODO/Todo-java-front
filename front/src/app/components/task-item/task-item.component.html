@@ -24,7 +24,7 @@
     <div class="task-deadline">
       <strong>Date limite : </strong>
       <span *ngIf="!isEditing">{{ task.deadline_task | date: 'dd/MM/yyyy' }}</span>
-      <input *ngIf="isEditing" [(ngModel)]="editedTask.deadline_task" type="date" class="task-deadline-input"/>
+      <input *ngIf="isEditing" [(ngModel)]="editedTask.deadline_task" [value]="editedTask.deadline_task | date: 'yyyy-MM-dd'" type="date" class="task-deadline-input"/>
     </div>
 
     <div class="task-priority">
@@ -32,10 +32,10 @@
       <span *ngIf="!isEditing">
         {{ task.priority_task === 1 ? 'Haute' : task.priority_task === 2 ? 'Moyenne' : 'Basse' }}
       </span>
-      <select *ngIf="isEditing" [(ngModel)]="editedTask.priority_task" class="task-priority-input">
-        <option value="1">Haute</option>
-        <option value="2">Moyenne</option>
-        <option value="3">Basse</option>
+      <select *ngIf="isEditing" [(ngModel)]="editedTask.priority_task" (ngModelChange)="onPriorityChange($event)" class="task-priority-input">
+        <option [value]="1">Haute</option>
+        <option [value]="2">Moyenne</option>
+        <option [value]="3">Basse</option>
       </select>
     </div>
 
