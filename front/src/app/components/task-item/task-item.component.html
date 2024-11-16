@@ -24,7 +24,7 @@
     <div class="task-deadline">
       <strong>Date limite : </strong>
       <span *ngIf="!isEditing">{{ task.deadline_task | date: 'dd/MM/yyyy' }}</span>
-      <input *ngIf="isEditing" [(ngModel)]="editedTask.deadline_task" [value]="editedTask.deadline_task | date: 'yyyy-MM-dd'" type="date" class="task-deadline-input"/>
+      <input *ngIf="isEditing" (change)="onDeadlineChange($event)" [value]="editedTask.deadline_task | date: 'yyyy-MM-dd'" type="date" class="task-deadline-input"/>
     </div>
 
     <div class="task-priority">
