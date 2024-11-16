@@ -2,8 +2,6 @@ import { Component,inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormControl } from "@angular/forms"
 import { AuthenticationService } from "../../services/authentication.service"
-import { Users } from 'models/user.model';
-
 @Component({
   selector: "app-signup-dialog",
   templateUrl: "./signup-dialog.component.html",
