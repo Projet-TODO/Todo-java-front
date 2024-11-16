@@ -5,7 +5,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%;}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+body { margin: 0; font-family: 'Playfair Display', serif;}
 
 .mat-mini-fab {
   color : theme.$white !important;
@@ -33,5 +33,5 @@ table {
   width: 100vw;
   height: 100vh;
   z-index: -1;
-  object-fit: cover; /* Assure que la vidéo couvre tout l'écran sans déformation */
+  object-fit: cover;
 }

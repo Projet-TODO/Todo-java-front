@@ -36,4 +36,9 @@ export class ProjectDetailsService {
     return this.http.delete<Task>(url);
   }
 
+  getProjectById(id: number): Observable<Project> {
+    const url = `${this.projectUrl}/project/${id}`;
+    return this.http.get<Project>(url);
+  }
+
 }

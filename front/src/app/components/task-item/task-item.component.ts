@@ -43,6 +43,7 @@ export class TaskItemCompnent implements OnInit {
 
   toggleTaskStatus(task: Task): void {
     task.achieved_task = !task.achieved_task;
+    this.update.emit(task);
   }
 
   startEdit(): void {
@@ -61,4 +62,13 @@ export class TaskItemCompnent implements OnInit {
     this.editedTask = { ...this.task };
   }
 
+  onPriorityChange(value: string) {
+    this.editedTask.priority_task = Number(value);
+  }
+
+  formatDateForInput(date: string): string {
+    if (!date) return '';
+    const d = new Date(date);
+    return d.toISOString().split('T')[0];
+  }
 }
