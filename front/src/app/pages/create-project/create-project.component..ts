@@ -3,7 +3,6 @@ import { Router } from "@angular/router";
 import { CreateProjectService } from "services/create-project.service";
 import { SharedDataService } from "services/shared-data.service";
 import { Project } from "models/project.model";
-import { Users } from "models/users.model";
 import { ProjectDetails } from "models/projectDetails.model";
 import { tap } from "rxjs";
 
